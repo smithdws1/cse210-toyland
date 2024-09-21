@@ -8,7 +8,7 @@ class Program
         List<int> numbers = new List<int>();
         int input = -1;
 
-        Console.WriteLine("Enter a series of number, type 0 when finished.");
+        Console.WriteLine("Enter a series of numbers, type 0 when finished.");
 
         while (input !=0)
         {
