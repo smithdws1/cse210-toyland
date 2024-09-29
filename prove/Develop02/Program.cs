@@ -115,7 +115,7 @@ public class Journal
         JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
         string json = JsonSerializer.Serialize(_entries, options);
         File.WriteAllText(filename, json);
-        Console.WriteLine("Your Journal is saved to file.\n");
+        Console.WriteLine("Your Journal is saved to a file.\n");
     }
 
     // Load journal from a JSON file
