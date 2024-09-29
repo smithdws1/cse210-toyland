@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-// As a stretch to exceed requirements I added saving and loading JSON files
-
 // Class for a journal entry
 public class Entry
 {
-    private string _date;
-    private string _promptQuestion;
-    private string _entryText;
+    public string _date;
+    public string _promptQuestion;
+    public string _entryText;
 
     public Entry(string promptQuestion)
     {
         _promptQuestion = promptQuestion;
     }
 
-    // User input
+    // Parameterless constructor for JSON deserialization. I was told to add this, but no idea why.
+    public Entry() { }
+
     public void SetEntryText()
     {
         Console.WriteLine("Prompt: " + _promptQuestion);
@@ -25,14 +25,12 @@ public class Entry
         _entryText = Console.ReadLine();
     }
 
-    // Set the date
     public void SetDate()
     {
         Console.WriteLine("Enter the date (YYYY-MM-DD):");
         _date = Console.ReadLine();
     }
 
-    // Override ToString for displaying the entry
     public override string ToString()
     {
         return $"Date: {_date}\nPrompt: {_promptQuestion}\nEntry: {_entryText}\n";
@@ -59,6 +57,7 @@ public class PromptGenerator
         };
     }
 
+    // Method to get a random prompt
     public string GetRandomPrompt()
     {
         Random random = new Random();
@@ -115,7 +114,7 @@ public class Journal
         JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
         string json = JsonSerializer.Serialize(_entries, options);
         File.WriteAllText(filename, json);
-        Console.WriteLine("Your Journal is saved to a file.\n");
+        Console.WriteLine("Your journal is saved to a file.\n");
     }
 
     // Load journal from a JSON file
@@ -137,6 +136,7 @@ public class Journal
     }
 }
 
+// Main program
 class Program
 {
     static void Main(string[] args)
