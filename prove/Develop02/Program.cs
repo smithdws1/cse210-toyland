@@ -6,34 +6,33 @@ using System.Text.Json;
 // Class for a journal entry
 public class Entry
 {
-    public string _date;
-    public string _promptQuestion;
-    public string _entryText;
+    public string Date { get; set; }
+    public string PromptQuestion { get; set; }
+    public string EntryText { get; set; }
 
     public Entry(string promptQuestion)
     {
-        _promptQuestion = promptQuestion;
+        PromptQuestion = promptQuestion;
     }
 
-    // Parameterless constructor for JSON deserialization. I was told to add this, but no idea why.
-    public Entry() { }
+    public Entry() { } 
 
     public void SetEntryText()
     {
-        Console.WriteLine("Prompt: " + _promptQuestion);
+        Console.WriteLine("Prompt: " + PromptQuestion);
         Console.Write("Your Response: ");
-        _entryText = Console.ReadLine();
+        EntryText = Console.ReadLine();
     }
 
     public void SetDate()
     {
         Console.WriteLine("Enter the date (YYYY-MM-DD):");
-        _date = Console.ReadLine();
+        Date = Console.ReadLine();
     }
 
     public override string ToString()
     {
-        return $"Date: {_date}\nPrompt: {_promptQuestion}\nEntry: {_entryText}\n";
+        return $"Date: {Date}\nPrompt: {PromptQuestion}\nEntry: {EntryText}\n";
     }
 }
 
@@ -41,9 +40,11 @@ public class Entry
 public class PromptGenerator
 {
     private List<string> _prompts;
+    private Random _random;
 
     public PromptGenerator()
     {
+        _random = new Random();
         _prompts = new List<string>
         {
             "Who was the most interesting person I interacted with today?",
@@ -60,8 +61,7 @@ public class PromptGenerator
     // Method to get a random prompt
     public string GetRandomPrompt()
     {
-        Random random = new Random();
-        return _prompts[random.Next(_prompts.Count)];
+        return _prompts[_random.Next(_prompts.Count)];
     }
 }
 
@@ -110,6 +110,10 @@ public class Journal
     {
         Console.Write("Enter a filename to save your journal: ");
         string filename = Console.ReadLine();
+        if (!filename.EndsWith(".json"))
+        {
+            filename += ".json";
+        }
 
         JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
         string json = JsonSerializer.Serialize(_entries, options);
@@ -122,6 +126,10 @@ public class Journal
     {
         Console.Write("Enter a filename to load Journal: ");
         string filename = Console.ReadLine();
+        if (!filename.EndsWith(".json"))
+        {
+            filename += ".json";
+        }
 
         if (File.Exists(filename))
         {
