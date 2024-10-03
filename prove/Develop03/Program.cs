@@ -42,7 +42,6 @@ public class Scripture
 
     public bool IsCompletelyHidden()
     {
-        // Instead of using All, use a loop
         foreach (Word word in _words)
         {
             if (!word.IsHidden())
