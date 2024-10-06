@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 public class Scripture
 {
@@ -12,7 +11,7 @@ public class Scripture
         _reference = reference;
         _words = new List<Word>();
 
-        // Split the scripture text into an Array - I don't know if I did this correctly. Testing will show.
+        // Split the scripture text into an array
         string[] wordsArray = text.Split(' ');
         foreach (var word in wordsArray)
         {
@@ -53,10 +52,10 @@ public class Scripture
     }
 }
 
-public class Reference;
+public class Reference
 {
     private string _book;
-    private string _chapter;
+    private int _chapter;
     private int _verse;
     private int _endVerse;
 
@@ -64,11 +63,11 @@ public class Reference;
     {
         _book = book;
         _chapter = chapter;
-        _verse = startVerse;
-        _endVerse = endVerse;
+        _verse = verse;
+        _endVerse = -1; 
     }
 
-    public srting GetDisplayText()
+    public string GetDisplayText()
     {
         if (_endVerse == -1)
             return $"{_book} {_chapter}:{_verse}";
@@ -77,35 +76,35 @@ public class Reference;
     }
 }
 
-public class Word;
+public class Word
 {
     private string _text;
     private bool _isHidden;
 
     public Word(string text)
     {
-        _text = ThreadStart;
-        _inHidden = false;
+        _text = text;
+        _isHidden = false;
     }
 
     public void Hide()
     {
-        _inHidden;
+        _isHidden = true;
     }
 
     public void Show()
     {
-        _inHidden()
+        _isHidden = false;
     }
-    
+
     public bool IsHidden()
     {
-    return _inHidden;
+        return _isHidden;
     }
 
     public string GetDisplayText()
     {
-    return _isHidden ? "________" : _text;
+        return _isHidden ? "________" : _text;
     }
 }
 
@@ -113,14 +112,22 @@ class Program
 {
     static void Main(string[] args)
     {
-        Reference scriptureReference = new Reference("Proverbs", 3, 5, 6);
-        Scripture scripture = new Scripture(scruptureReference, "Trust in the Lord with all thine heart and lean not unto thine own understanding In all the ways acknowledge Him and He shall direct the paths");
+        Reference scriptureReference = new Reference("Proverbs", 3, 5);
+        Scripture scripture = new Scripture(scriptureReference, "Trust in the Lord with all thine heart and lean not unto thine own understanding In all thy ways acknowledge Him and He shall direct thy paths");
 
         while (true)
         {
-            Console.Clear();
+            try
+            {
+                Console.Clear();
+            }
+            catch (System.IO.IOException)
+            {
+                // If Console.Clear() fails, ignore the exception and continue
+            }
+
             Console.WriteLine(scripture.GetDisplayText());
-            Console.WriteLine("\nPress Enter to hide more words or type quit to exit.");
+            Console.WriteLine("\nPress Enter to hide words or type quit to exit.");
 
             string input = Console.ReadLine();
             if (input == "quit")
@@ -132,8 +139,17 @@ class Program
 
             if (scripture.IsCompletelyHidden())
             {
-                Console.Clear();
+                try
+                {
+                    Console.Clear();
+                }
+                catch (System.IO.IOException)
+                {
+                    // Ignore the exception if Console.Clear() fails
+                }
+
                 Console.WriteLine("You're all done!");
+                break;
             }
         }
     }
