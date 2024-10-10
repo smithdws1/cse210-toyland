@@ -9,7 +9,7 @@ public class Video
     public int LengthSeconds { get; set; }
     private List<Comment> comments = new List<Comment>();
 
-    public video(string title, string author, int lengthSeconds)
+    public Video(string title, string author, int lengthSeconds)
     {
         Title = title;
         Author = author;
@@ -32,7 +32,7 @@ public class Video
         Console.WriteLine($"Number of Comments: {GetCommentCount()}");
         foreach (var comment in comments)
         {
-            Console.WriteLine($"Comment by {comment.NameCommentator}: {comment.Text}");
+            Console.WriteLine($"Comment by {comment.NameCommentator}: {comment.CommentText}");
         }
         Console.WriteLine();
     }
@@ -62,6 +62,19 @@ public class Program
         video1.AddComment(new Comment("Lindsay", "Gross video!"));
         video1.AddComment(new Comment("Samuel", "What did I just watch?"));
 
-        
+        video2.AddComment(new Comment("Becky", "Terrible Video."));
+        video2.AddComment(new Comment("John", "I hated it!"));
+        video2.AddComment(new Comment("NewNameHeer", "The best video ever!"));
+
+        video3.AddComment(new Comment("William", "Meh..."));
+        video3.AddComment(new Comment("Richard", "Simply the best!"));
+        video3.AddComment(new Comment("Natasha", "What a waste of time."));
+
+        List<Video> videos = new List<Video> { video1, video2, video3 };
+
+        foreach (var video in videos)
+        {
+            video.DisplayVideoInfo();
+        }
     }
 }
