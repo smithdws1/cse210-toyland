@@ -150,8 +150,8 @@ class Program
         Customer customer2 = new Customer("Lindsay Smith", address2);
 
         Product product1 = new Product("Computer", "0001", 2000f, 1);
-        Product product2 = new Product("Mouse", "0002", 20f, 2);
-        Product product3 = new Product("Monitor", "0003", 200f, 1);
+        Product product2 = new Product("Mouse", "0002", 10f, 2);
+        Product product3 = new Product("Monitor", "0003", 500f, 1);
 
         Order order1 = new Order(customer1);
         order1.AddProduct(product1);
