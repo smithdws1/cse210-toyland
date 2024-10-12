@@ -47,8 +47,8 @@ public class Address
     private string street;
     private string city;
     private string state;
+    private string zipCode; 
     private string country;
-    private string zipCode;
     public Address(string street, string city, string state, string zipCode, string country)
     {
         this.street = street;
@@ -149,7 +149,7 @@ class Program
         Customer customer1 = new Customer("David Smith", address1);
         Customer customer2 = new Customer("Lindsay Smith", address2);
 
-        Product product1 = new Product("Computer", "0001", 1000f, 1);
+        Product product1 = new Product("Computer", "0001", 2000f, 1);
         Product product2 = new Product("Mouse", "0002", 20f, 2);
         Product product3 = new Product("Monitor", "0003", 200f, 1);
 
