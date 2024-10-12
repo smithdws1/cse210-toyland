@@ -55,8 +55,8 @@ public class Program
     public static void Main(string[] args)
     {
         Video video1 = new Video("First Video Title", "First Author", 10);
-        Video video2 = new Video("Second Video Title", "Second Author", 20);
-        Video video3 = new Video("Thrid Video Title", "Third Author", 30);
+        Video video2 = new Video("TBD", "Second Author", 20);
+        Video video3 = new Video("Thrid Thing Here", "Third Author", 30);
 
         video1.AddComment(new Comment("David", "Awesome video!"));
         video1.AddComment(new Comment("Lindsay", "Gross video!"));
