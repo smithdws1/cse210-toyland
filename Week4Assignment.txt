@@ -1,0 +1,84 @@
+
++--------------------------------+
+|           Video  		         |
++--------------------------------+
+| - Title: string 	             |
+| - Author: string	             |
+| - Length: int     	         |
+| - Comments: List<Comment>	     |
++--------------------------------+
+| + GetCommentCount(): int	     |
+| + AddComment(comment: Comment) |
++--------------------------------+
++-----------------------------+
+|          Comment            |
++-----------------------------+
+| - CommenterName: string     |
+| - Text: string              |
++-----------------------------+
+
+Expected Output:
+
+Title: <title>, Author: <Author>, Length: <# of seconds> seconds
+Number of Comments: <number>
+Comment by <Author1>: <relatedcomment>
+Comment by <Author2>: <relatedcomment>
+Comment by <Author3>: <relatedcomment>
+
++--------------------------+
+|        Product           |
++--------------------------+
+| - Name: string           |
+| - ProductId: string      |
+| - Price: float	       |
+| - Quantity: int          |
++--------------------------+
+| + GetTotalCost(): float|
++--------------------------+
+
++--------------------------+
+|        Customer          |
++--------------------------+
+| - Name: string           |
+| - Address: Address       |
++--------------------------+
+| + IsInUSA(): bool        |
++--------------------------+
+
++------------------------------+
+|          Address             |
++------------------------------+
+| - Street: string             |
+| - City: string               |
+| - State: string			   |
+| - Zip: string				   |
+| - Country: string            |
++------------------------------+
+| + IsInUSA(): bool            |
+| + GetFullAddress(): string   |
++------------------------------+
+
++----------------------------------+
+|              Order               |
++----------------------------------+
+| - products: List<Product>        |
+| - Customer: Customer             |
++----------------------------------+
+| + AddProduct(product: Product)   |
+| + GetTotalCost(): float     	   |
+| + GetPackingLabel(): string      |
+| + GetShippingLabel(): string     |
++----------------------------------+
+
+Expected Output:
+
+Packing Label:
+<product> (ID: <product#>)
+<product> (ID: <product#>)
+
+Shipping Label:
+<Name>
+<Address>
+<City>, <State> <Zip Code>
+<Country>
+Total Cost: <Total>
