@@ -4,10 +4,11 @@ using System.Transactions;
 
 public class Video
 {
+    private List<Comment> _comments = new List<Comment>();
+
     public string Title { get; set; }
     public string Author { get; set; }
     public int LengthSeconds { get; set; }
-    private List<Comment> comments = new List<Comment>();
 
     public Video(string title, string author, int lengthSeconds)
     {
@@ -18,37 +19,37 @@ public class Video
 
     public void AddComment(Comment comment)
     {
-        comments.Add(comment);
+        _comments.Add(comment);
     }
 
     public int GetCommentCount()
     {
-        return comments.Count;
+        return _comments.Count;
     }
 
     public void DisplayVideoInfo()
     {
         Console.WriteLine($"Title: {Title}, Author: {Author}, Length: {LengthSeconds} seconds");
         Console.WriteLine($"Number of Comments: {GetCommentCount()}");
-        foreach (var comment in comments)
+        foreach (var comment in _comments)
         {
             Console.WriteLine($"Comment by {comment.NameCommentator}: {comment.CommentText}");
         }
         Console.WriteLine();
     }
 }
+
 public class Comment
 {
     public string NameCommentator { get; set; }
     public string CommentText { get; set; }
-    
+
     public Comment(string nameCommentator, string commentText)
     {
-            NameCommentator = nameCommentator;
-            CommentText = commentText;
+        NameCommentator = nameCommentator;
+        CommentText = commentText;
     }
 }
-
 
 public class Program
 {
@@ -56,7 +57,7 @@ public class Program
     {
         Video video1 = new Video("First Video Title", "First Author", 10);
         Video video2 = new Video("TBD", "Second Author", 20);
-        Video video3 = new Video("Thrid Thing Here", "Third Author", 30);
+        Video video3 = new Video("Third Thing Here", "Third Author", 30);
 
         video1.AddComment(new Comment("David", "Awesome video!"));
         video1.AddComment(new Comment("Lindsay", "Gross video!"));
