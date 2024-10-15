@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+//As a stretch I added exception handling around the Console.Clear() to help it not crash with unexpected issues.
 public class Scripture
 {
     private Reference _reference;
