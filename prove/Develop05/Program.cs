@@ -141,7 +141,7 @@ public class ListingActivity : Activity
 
         _count = 0;
         Console.WriteLine("Start listing...");
-        ShowSpinner(6);
+        ShowSpinner(5); 
 
         DateTime start = DateTime.Now;
         while ((DateTime.Now - start).TotalSeconds < _duration)
@@ -154,6 +154,7 @@ public class ListingActivity : Activity
         Console.WriteLine($"You listed {_count} items.");
         DisplayEndingMessage();
     }
+
 
     private string GetRandomPrompt()
     {
@@ -221,17 +222,18 @@ public class ReflectingActivity : Activity
         {
             string question = GetRandomQuestion();
             Console.WriteLine(question);
-            DisplayQuestions();
+            ShowSpinner(5);
         }
 
         DisplayEndingMessage();
     }
 
+
     private string GetRandomPrompt()
     {
         if (_usedPrompts.Count == _prompts.Count)
         {
-            _usedPrompts.Clear();  // Reset the used prompts if all have been used
+            _usedPrompts.Clear();
         }
 
         List<string> remainingPrompts = new List<string>();
@@ -254,7 +256,7 @@ public class ReflectingActivity : Activity
     {
         if (_usedQuestions.Count == _questions.Count)
         {
-            _usedQuestions.Clear();  // Reset the used questions if all have been used
+            _usedQuestions.Clear();
         }
 
         List<string> remainingQuestions = new List<string>();
