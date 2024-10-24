@@ -2,9 +2,9 @@ public abstract class Goal
 {
     protected string _shortName;
     protected string _description;
-    protected string _points;
+    protected int _points;
 
-    public Goal(string name, string description, string points)
+    public Goal(string name, string description, int points)
     {
         _shortName = name;
         _description = description;
@@ -18,6 +18,11 @@ public abstract class Goal
     public virtual string GetDetailsString()
     {
         return $"[ ] {_shortName} ({_description})";
+    }
+
+    public virtual int GetPoints()
+    {
+        return _points;
     }
 
     public abstract string GetStringRepresentation();
