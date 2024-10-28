@@ -1,3 +1,3 @@
-Work|I want to get to work on time.|10|True
-Happy Marriage|I want to have a happy marriage|100
-Cheklist|I want to get to all the items on my checklist.|10|0|5|10
+Wake up|Time to get up and go potty.|10|False
+Exercise|Work out in the morning|10|0|5|50
+Study the Scriptures|Read, ponder, and study the Gospel in the Scriptures.|500
